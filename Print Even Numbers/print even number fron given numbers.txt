@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProgFundamentals8               //DO NOT CHANGE the name of namespace
+{
+    public class Program                  //DO NOT CHANGE the name of class 'Program'
+    { 
+        public static void Main(string[] args)      //DO NOT CHANGE 'Main' Signature
+        {
+            
+           Console.Write("Enter a number: ");
+
+           int num=Convert.ToInt32(Console.ReadLine());
+
+           Console.WriteLine(num);
+
+           Console.WriteLine();
+
+          int n=0;
+
+          while (n<10)
+          {
+
+              num=num+1;
+
+              if(num%2==0)
+              {
+
+                 Console.Write(num + " ");
+
+                  n=n+1; 
+                  
+              } 
+          }
+        }
+    }
+}
