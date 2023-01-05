@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SumOfFactorial //DO NOT change the namespace name
+{
+   public class Program
+   {
+       public static void Main(string[] args) 
+        {            
+             int size;
+             int sum =0;
+             Console.WriteLine("Enter the size of an array:");
+             size = Convert.ToInt32(Console.ReadLine());
+             int[] inputs = new int[size];
+             Console.WriteLine("Enter the elements:");
+             for(int i=0; i<size; i++)
+             {
+                 inputs[i] = Convert.ToInt32(Console.ReadLine());
+             }
+             for(int i=0; i<size; i++)
+             {
+                 int factorial=1;
+                 if(inputs[i]<0 || inputs[i]>10)
+                 {
+                     continue;
+                 }
+                 else
+                 {
+                     for(int j=inputs[i]; j>1; j--)
+                     {
+                        factorial = factorial*j;
+                       // Console.WriteLine(factorial);
+                     }
+                     sum = sum+factorial;
+                 }
+             }
+             
+             if(sum == 0)
+             {
+                 Console.WriteLine("No positive and single digit numbers found in an array.");
+             }
+             
+             else
+             {
+                 Console.WriteLine(sum);
+             }
+        } 
+   }
+}
