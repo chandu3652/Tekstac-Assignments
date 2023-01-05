@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Array_1 //DO NOT change the namespace name
+{
+    public class Program //DO NOT change the class name
+    {
+        public static void Main(string[] args)  //DO NOT change the method signature
+        {
+            //Implement your code here
+            Console.WriteLine("Enter the number of applications:");
+            int num = Convert.ToInt32(Console.ReadLine());
+            string[] inputs = new string[num];
+            Console.WriteLine("Enter the applicant names:");
+            for(int i=0; i<num; i++)
+            {
+                inputs[i] = Console.ReadLine();
+            }
+            int verified=0, notverified=0;
+            bool ischar=true;
+            for (int i=0; i<num; i++)
+            {
+                string temname = inputs[i].Replace(" ","");
+                for(int j=0; j<temname.Length; j++)
+                {
+                  if(Char.IsLetter(temname[j]))
+                  {
+                      ischar=true;
+                  }
+                  else
+                  {
+                      ischar=false;
+                      break;
+                  }
+                }
+                if(ischar == true)
+                {
+                    verified++;
+                }
+                else
+                {
+                    notverified++;
+                }
+            }
+            Console.WriteLine("Verified = "+ verified);
+            Console.WriteLine("Not verified = "+ notverified);
+        }
+    }
+}
