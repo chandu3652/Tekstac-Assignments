@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Array_2 //DO NOT change the namespace name
+{
+    public class Program //DO NOT change the class name
+    {
+        public static void Main(string[] args)  //DO NOT change the method signature
+        {
+            string fnum, snum;
+            int num1=0;
+            int num2=0;
+            int sum=0;
+            Console.WriteLine("Enter the input 1:");
+            fnum = Console.ReadLine();
+            Console.WriteLine("Enter the input 2:");
+            snum = Console.ReadLine();
+            if(fnum.Length == snum.Length)
+            {
+                char[] first = fnum.ToCharArray();
+                char[] second = snum.ToCharArray();
+                
+                for(int i=0; i<first.Length; i++)
+                {
+                    num1 = (int)Char.GetNumericValue(first[i]);
+                    num2 = (int)Char.GetNumericValue(second[i]);
+                    sum = sum+(num1*num2);
+                }
+                
+                Console.WriteLine(sum);
+            }
+            
+            else
+            {
+                Console.WriteLine("Invalid inputs");
+            }
+            
+            
+        }
+    }
+}
