@@ -1,0 +1,148 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MultiLevelInheritance // Do not change the namespace name
+{
+        class Program
+    {
+    //Implement your code here
+    public class TextileShop
+    {
+       public String ClothesType
+        {
+            get;
+            set;
+        }
+        public int Quantity
+        {
+            get;
+            set;
+        }
+        public double Price
+        {
+            get;
+            set;
+        }
+        public double TotalPrice
+        {
+            get;
+            set;
+        }
+
+    }
+    public class Billing: TextileShop
+    {
+        public double GenerateBill()
+        {
+            TotalPrice = 0;
+            if(ClothesType == "Men")
+            {	 	  	    	 	      	  	 	
+                TotalPrice = Quantity * Price + 150;
+            }
+            else if (ClothesType == "Women")
+            {
+                TotalPrice = Quantity * Price + 250;
+            }
+            else if (ClothesType == "Children")
+            {
+                TotalPrice = Quantity * Price + 50;
+            }
+            return TotalPrice;
+        }
+    }
+    public class Discount : Billing
+    {
+        public double GetDiscount()
+        {
+            double result = 0;
+            if(ClothesType == "Men" && TotalPrice >=2000)
+            {
+                result = (TotalPrice * 10) / 100;
+                result = TotalPrice - result;
+            }
+            else if (ClothesType == "Women" && TotalPrice >= 3000)
+            {
+                result = (TotalPrice * 12) / 100;
+                result = TotalPrice - result;
+            }
+            else if (ClothesType == "Children" && TotalPrice >= 1500)
+            {
+                result = (TotalPrice * 7) / 100;
+                result = TotalPrice - result;
+            }
+            else
+            {
+                return TotalPrice;
+            }	 	  	    	 	      	  	 	
+            return result;
+        }
+    }
+
+        static void Main(string[] args)
+        {
+            
+            while(true){
+                
+            Discount discountobj = new Discount();
+            Console.WriteLine("1.Men");
+            Console.WriteLine("2.Women");
+            Console.WriteLine("3.Children");
+            Console.WriteLine("4.Exit");
+
+            Console.WriteLine("Enter the choice");
+            int choice = Convert.ToInt32(Console.ReadLine());
+
+            switch(choice)
+            {
+                case 1:
+                    {
+                        discountobj.ClothesType = "Men";
+                        Console.WriteLine("Enter the quantity");
+                        discountobj.Quantity = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter the price");
+                        discountobj.Price = double.Parse(Console.ReadLine());
+                        double result1 = discountobj.GenerateBill();
+                        double result2 = discountobj.GetDiscount();
+                        Console.WriteLine("Bill:" + result1);
+                        Console.WriteLine("Bill with discount:" + result2);
+                        break;
+                    }
+                case 2:
+                    {
+                        discountobj.ClothesType = "Women";
+                        Console.WriteLine("Enter the quantity");
+                        discountobj.Quantity = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter the price");
+                        discountobj.Price = double.Parse(Console.ReadLine());
+                        double result1 = discountobj.GenerateBill();
+                        double result2 = discountobj.GetDiscount();
+                        Console.WriteLine("Bill:" + result1);
+                        Console.WriteLine("Bill with discount:" + result2);
+                        break;
+                    }	 	  	    	 	      	  	 	
+                case 3:
+                    {
+                        discountobj.ClothesType = "Children";
+                        Console.WriteLine("Enter the quantity");
+                        discountobj.Quantity = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Enter the price");
+                        discountobj.Price = double.Parse(Console.ReadLine());
+                        double result1 = discountobj.GenerateBill();
+                        double result2 = discountobj.GetDiscount();
+                        Console.WriteLine("Bill:" + result1);
+                        Console.WriteLine("Bill with discount:" + result2);
+                        break;
+                    }
+                case 4:
+                    {
+                        return;
+                    }
+            }
+ 
+ }
+ }
+    }
+}
