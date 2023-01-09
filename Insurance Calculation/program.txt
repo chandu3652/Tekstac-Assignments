@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InsuranceDetails //DO NOT Change namespace name
+{
+    public class Program      //DO NOT Change class 'Program' name
+    {
+        
+        public static void Main(string[] args)
+        {
+            Program pobj= new Program();
+           //Implement code here
+           Insurance inobj = new Insurance();
+           Console.Write("Insurance Number : ");
+           inobj.InsuranceNo = Console.ReadLine();
+           Console.Write("Insurance Name : ");
+           inobj.InsuranceName = Console.ReadLine();
+           Console.Write("Amount Covered : ");
+           inobj.AmountCovered = Convert.ToDouble(Console.ReadLine());
+           Console.Write("Select\n1.Life Insurance \n2.Motor Insurance : ");
+           int opt = Convert.ToInt32(Console.ReadLine());
+           double premium = pobj.addPolicy(inobj,opt);
+           Console.WriteLine("Calculate Premium : "+premium);
+        }
+       //Implement required methods here
+       public double addPolicy(Insurance inobj,int opt)
+       {
+           double premium;
+           if(opt == 1)
+           {
+               LifeInsurance lobj = new LifeInsurance();
+               lobj.InsuranceNo = inobj.InsuranceNo;
+               lobj.InsuranceName = inobj.InsuranceName;
+               lobj.AmountCovered = inobj.AmountCovered;
+               Console.Write("Policy Term : ");
+                lobj.PolicyTerm = Convert.ToInt32(Console.ReadLine());
+               Console.Write("Benefit Percent : ");
+               lobj.BenefitPercent = float.Parse(Console.ReadLine());
+               premium = lobj.calculatePremium();
+           }	 	  	  		    	  	   	    	 	
+           else
+           {
+               MotorInsurance mobj = new MotorInsurance();
+               mobj.InsuranceNo = inobj.InsuranceNo;
+               mobj.InsuranceName = inobj.InsuranceName;
+               mobj.AmountCovered = inobj.AmountCovered;
+               Console.Write("Depreciation Percent : ");
+               
+               mobj.DepPercent = Convert.ToSingle(Console.ReadLine());
+               premium = mobj.calculatePremium();
+           }
+           return premium;
+       }
+    }
+}

@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace InsuranceDetails             //DO NOT Change namespace name
+{
+    //Implement the code here. Keep the class 'public'
+    public class Insurance
+    {
+        private string insuranceNo;
+        private string insuranceName;
+        private double amountCovered;
+        public string InsuranceNo
+        {
+            get{return insuranceNo;}
+            set{
+                insuranceNo=value;
+            }
+        }
+        public string InsuranceName
+        {
+            get{return insuranceName;}
+            set{
+                insuranceName=value;
+            }
+        }
+        public double AmountCovered
+        {
+            get{return amountCovered;}
+            set{
+                amountCovered=value;
+            }
+        }
+    }
+    public class MotorInsurance : Insurance
+    {	 	  	  		    	  	   	    	 	
+        private double idv;
+        private float depPercent;
+        public double Idv{
+            get{return idv;}
+            set{
+                idv=value;
+            }
+        }
+        public float DepPercent{
+            get{return depPercent;}
+            set{
+                depPercent=value;
+            }
+        }
+        public double calculatePremium()
+        {
+            Idv= AmountCovered -((AmountCovered*DepPercent)/100);
+            double premium = (Idv*3)/100;
+           // Console.WriteLine("m-->"+premium);
+            return premium;
+        }
+    }
+    public class LifeInsurance : Insurance
+    {
+        private int policyTerm;
+        private float benefitPercent;
+        public int PolicyTerm{
+            get{return policyTerm;}
+            set{
+                policyTerm = value;
+            }
+        }
+        public float BenefitPercent{
+            get{return benefitPercent;}
+            set{
+                benefitPercent = value;
+            }	 	  	  		    	  	   	    	 	
+        }
+        public double calculatePremium()
+        {
+            double res = AmountCovered-((AmountCovered*benefitPercent)/100);
+            res = res/policyTerm;
+           // Console.WriteLine("-->"+res);
+            return res;
+        }
+    }
+}
