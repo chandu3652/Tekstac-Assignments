@@ -1,0 +1,50 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MethodOverride //DO NOT change the namespace name
+{
+    public class Program //DO NOT change the class name
+    {
+        public static void Main(string[] args)  //DO NOT change the method signature
+        {
+            //Implement your code here
+            StandardCustomer standardCustomerObj = new StandardCustomer();
+            VipCustomer vipCustomerObj = new VipCustomer();
+            while(true){
+            Console.WriteLine("1.Calculate bill for the standard customer");
+            Console.WriteLine("2.Calculate bill for the vip customer");
+            Console.WriteLine("3.Exit");
+            Console.WriteLine("Enter your choice:");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            switch(choice)
+            {
+                case 1:
+                    {
+                        Console.WriteLine("Enter the amount");
+                        double amount = Convert.ToDouble(Console.ReadLine());
+
+                        double result = standardCustomerObj.Billing(amount);
+                        Console.WriteLine(result);
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("Enter the amount");
+                        double amount = Convert.ToDouble(Console.ReadLine());
+
+                        double result = vipCustomerObj.Billing(amount);
+                        Console.WriteLine(result);
+                        break;
+                    }
+                    case 3:
+                    {
+                        return;
+                    }
+            }
+        }
+    }
+}
+} 
